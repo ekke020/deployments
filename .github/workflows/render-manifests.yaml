@@ -1,0 +1,25 @@
+name: Render kubernetes manifests
+
+on:
+  push: 
+    branches: [ main ]
+    paths: [ raw-config/* ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Run render script
+        run: ./render.sh
+      - name: Commit if changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git -am "Workflow commit"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
