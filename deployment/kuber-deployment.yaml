@@ -1,0 +1,48 @@
+apiVersion: app/v1
+kind: Deployment
+metadata:
+  name: kuber
+  labels:
+    run: kuber
+spec:
+  selector:
+    matchLabels:
+      run: kuber
+    replicas: 3
+  template:
+    metadata:
+      labels:
+        run: kuber
+    spec:
+      containers:
+        - image: ekke020/kuber:1.2
+          name: kuber
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "128Mi"
+            limits:
+              cpu: "1000m"
+              memory: "256Mi"
+          ports:
+            - containerPort: 7878
+              name: http
+              protocol: TCP
+          # Restarts the pod if it can't be reached 3 times in 30 sec
+          livenessProbe:
+            httpGet:
+              path: /healthy
+              port: 7878
+            initialDelaySeconds: 5
+            timeoutSeconds: 1
+            periodSeconds: 10
+            failureThreshold: 3
+          # This checks if the pod is ready to recive traffic 
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 7878
+            periodSeconds: 2
+            initialDelaySeconds: 0
+            failureThreshold: 3
+            successThreshold: 1
