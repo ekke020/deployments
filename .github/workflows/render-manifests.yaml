@@ -3,7 +3,8 @@ name: Render kubernetes manifests
 on:
   push: 
     branches: [ main ]
-    paths: [ raw-configs/*/ ]
+    paths: 
+      - raw-configs/**
 
 jobs:
   build:
