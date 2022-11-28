@@ -1,0 +1,22 @@
+applySpecVersion: 1
+spec:
+  configSync:
+    enabled: true
+    gcpServiceAccountEmail: null
+    httpsProxy: null
+    policyDir: manifests
+    preventDrift: false
+    secretType: none
+    sourceFormat: unstructured
+    sourceType: git
+    syncBranch: main
+    syncRepo: https://github.com/ekke020/deployments
+    syncRev: HEAD
+    syncWait: 15
+  hierarchyController:
+    enableHierarchicalResourceQuota: false
+    enablePodTreeLabels: false
+    enabled: false
+  policyController:
+    auditIntervalSeconds: 60
+    enabled: false
