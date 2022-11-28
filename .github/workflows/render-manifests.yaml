@@ -5,7 +5,7 @@ on:
     branches: [ main ]
     paths: 
       - 'raw-configs/kuber/*'
-
+      - .github/**
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,6 +16,7 @@ jobs:
         run: ./render.sh
       - name: Commit if changes
         run: |
+          git --version
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git -am "Workflow commit"
