@@ -19,7 +19,8 @@ jobs:
           git --version
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git commit -am "Workflow commit"
+          git add --all
+          git commit -m "Workflow commit"
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
