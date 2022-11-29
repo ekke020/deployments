@@ -21,10 +21,10 @@ spec:
           image: ekke020/kuber:latest
           resources:
             requests:
-              cpu: "500m"
+              cpu: "50m"
               memory: "128Mi"
             limits:
-              cpu: "1000m"
+              cpu: "100m"
               memory: "256Mi"
           ports:
             - containerPort: 7878
