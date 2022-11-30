@@ -10,9 +10,7 @@ metadata:
 
 spec:
   selector:
-    service: kuber-service
-    run: app
-    version: "1.0"
+    app: kuber
   ports:
   - name: http
     port: 7878
