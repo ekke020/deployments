@@ -18,6 +18,7 @@ spec:
       annotations:
         autoscaling.knative.dev/target: "2"
         autoscaling.knative.dev/min-scale: "1"
+        autoscaling.knative.dev/class: "kpa.autoscaling.knative.dev"
     spec:
       containers:
         - name: kuber
