@@ -48,6 +48,9 @@ spec:
             initialDelaySeconds: 0
             failureThreshold: 3
             successThreshold: 1
+      imagePullSecrets:
+        - name: regcred
+        
 ---
 apiVersion: apps/v1
 kind: Service
