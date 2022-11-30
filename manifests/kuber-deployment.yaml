@@ -13,11 +13,11 @@ spec:
   - revisionName: old
     tag: blue
     percent: 100
-  replicas: 2
   template:
     metadata:
       annotations:
         autoscaling.knative.dev/target: "2"
+        autoscaling.knative.dev/min-scale: "1"
     spec:
       containers:
         - name: kuber
