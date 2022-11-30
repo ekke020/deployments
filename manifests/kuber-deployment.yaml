@@ -21,10 +21,10 @@ spec:
           image: ekke020/kuber:latest
           resources:
             requests:
-              cpu: "50m"
+              cpu: "500m"
               memory: "128Mi"
             limits:
-              cpu: "100m"
+              cpu: "1000m"
               memory: "256Mi"
           ports:
             - containerPort: 7878
@@ -48,5 +48,27 @@ spec:
             initialDelaySeconds: 0
             failureThreshold: 3
             successThreshold: 1
-      imagePullSecrets:
-        - name: regcred
+---
+apiVersion: apps/v1
+kind: Service
+metadata:
+  labels:
+    service: kuber-service
+  name: kuber-service
+  namespace: default
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 7878
+  selector:
+    service: kuber-service
+  type: ClusterIp
+  traffic:
+  - revisionName: new
+    tag: green
+    percent: 0
+  - revisionName: old
+    tag: blue
+    percent: 100
