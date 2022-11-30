@@ -13,6 +13,7 @@ spec:
   - revisionName: old
     tag: blue
     percent: 100
+  replicas: 2
   template:
       spec:
         containers:
