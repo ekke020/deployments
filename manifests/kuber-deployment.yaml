@@ -9,10 +9,10 @@ spec:
   traffic:
   - revisionName: new
     tag: green
-    percent: 0
+    percent: 50
   - revisionName: old
     tag: blue
-    percent: 100
+    percent: 50
   template:
     metadata:
       annotations:
