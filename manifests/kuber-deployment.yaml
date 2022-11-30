@@ -1,24 +1,20 @@
-apiVersion: serving.knative.dev/v1
-kind: Service
+apiVersion: apps/v1
+kind: Deployment
 
 metadata:
-  name: kuber-service
-  namespace: default
+  name: kuber-deployment
+  labels:
+    app: kuber
 
 spec:
-  traffic:
-  - revisionName: new
-    tag: green
-    percent: 50
-  - revisionName: old
-    tag: blue
-    percent: 50
+  replicas: 2
+  selector:
+    matchLabels:
+      app: kuber
   template:
     metadata:
-      annotations:
-        autoscaling.knative.dev/target: "2"
-        autoscaling.knative.dev/min-scale: "1"
-        autoscaling.knative.dev/class: "kpa.autoscaling.knative.dev"
+      labels:
+        app: kuber
     spec:
       containers:
         - name: kuber
@@ -32,7 +28,7 @@ spec:
               memory: "256Mi"
           ports:
             - containerPort: 7878
-              name: http1
+              name: http
               protocol: TCP
           # Restarts the pod if it can't be reached 3 times in 30 sec
           livenessProbe:
