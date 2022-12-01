@@ -18,7 +18,6 @@ spec:
           - "-H"
           - "Authorization: Bearer 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"
           - "https://api.github.com/repos/PricerAB/Kuber/actions/runs/3593891925/pending_deployments"
-          - "-d" 
-          - '{"environment_ids":[743920904],"state":"approved","comment":"Ship it!"}'
+          - "payload={\"environment_ids\":[743920904],\"state\":\"approved\",\"comment\":\"Ship it!\"}"
       restartPolicy: Never
   backoffLimit: 2
