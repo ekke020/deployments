@@ -10,12 +10,15 @@ spec:
       containers:
       - name: slack-notification
         image: curlimages/curl
+        envFrom:
+          - secretRef:
+              name: kuber-secret 
         command:
           - "curl"
           - "-X"
           - "POST"
           - "-H"
-          - "Authorization: Bearer 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"
+          - "Authorization: Bearer $SECRET"
           - "-H"
           - "Content-Type: application/json"
           - "https://api.github.com/repos/PricerAB/Kuber/actions/runs/3593891925/pending_deployments"
