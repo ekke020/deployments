@@ -23,7 +23,7 @@ spec:
           - "Authorization: Bearer {github_token}"
           - "https://api.github.com/repos/PricerAB/{repo}/actions/runs/{run_id}/pending_deployments"
           - "-d" 
-          - {{"environment_ids":[{env_id}],"state":"approved","comment":"Ship it!"}}
+          - '{{"environment_ids":[{env_id}],"state":"approved","comment":"Ship it!"}}'
       restartPolicy: Never
   backoffLimit: 2"""
   return template
