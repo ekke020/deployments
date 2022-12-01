@@ -7,7 +7,6 @@ metadata:
   generateName: app-slack-notification-
   annotations:
     argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   template:
     spec:
