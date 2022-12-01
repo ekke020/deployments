@@ -4,7 +4,7 @@ def temp_file(file, github_token, repo, run_id, env_id):
   template = f"""apiVersion: batch/v1
 kind: Job
 metadata:
-  generateName: app-slack-notification-
+  generateName: kuber-workflow-approver
   annotations:
     argocd.argoproj.io/hook: PostSync
 spec:
@@ -23,7 +23,7 @@ spec:
           - "Content-Type: application/json"
           - "https://api.github.com/repos/PricerAB/{repo}/actions/runs/{run_id}/pending_deployments"
           - "-d"
-          - "{{"environment_ids":[{env_id}],"state":"approved","comment":"Ship it!"}}"
+          - "{{\\"environment_ids\\":[{env_id}],\\"state\\":\\"approved\\",\\"comment\\":\\"Ship it!\\"}}"
       restartPolicy: Never
   backoffLimit: 2"""
   return template

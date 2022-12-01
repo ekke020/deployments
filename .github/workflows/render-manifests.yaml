@@ -29,6 +29,7 @@ jobs:
         shell: bash
       - name: generate hook
         run: |
+        
           python3 kuber-hook.py ${{ secrets.API_GITHUB_TOKEN }} ${{ steps.parse.outputs.repo }} ${{ steps.parse.outputs.run_id }} ${{ steps.parse.outputs.env_id }}
       - name: Run render script
         run: ./render.sh
