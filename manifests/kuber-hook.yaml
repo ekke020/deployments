@@ -4,6 +4,7 @@ metadata:
   generateName: kuber-workflow-approver
   annotations:
     argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   template:
     spec:
@@ -15,7 +16,7 @@ spec:
           - "-X"
           - "POST"
           - "-H"
-          - "Authorization: Bearer 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"
+          - "Authorization: Bearer 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"
           - "-H"
           - "Content-Type: application/json"
           - "https://api.github.com/repos/PricerAB/Kuber/actions/runs/3593891925/pending_deployments"
