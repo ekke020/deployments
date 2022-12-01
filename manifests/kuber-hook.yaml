@@ -9,12 +9,12 @@ spec:
     spec:
       containers:
       - name: slack-notification
-        image: alpine
+        image: ubuntu
         envFrom:
         - secretRef:
             name: kuber-secret
         command:
-          - "/bin/sh -c 'echo secret:$SECRET'"
+          - "echo secret:$SECRET"
           - "curl"
           - "-X"
           - "POST"
