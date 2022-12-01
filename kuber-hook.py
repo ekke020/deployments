@@ -17,7 +17,8 @@ spec:
         - secretRef:
             name: kuber-secret
         command:
-          - "echo secret:$SECRET"
+          - "echo"
+          - "secret:$SECRET"
           - "curl"
           - "-X"
           - "POST"
