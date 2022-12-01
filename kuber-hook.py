@@ -17,13 +17,13 @@ spec:
           - "curl"
           - "-X"
           - "POST"
-          - "--data-urlencode"
           - "-H"
           - "Authorization: Bearer {github_token}"
           - "-H"
           - "Content-Type: application/json"
           - "https://api.github.com/repos/PricerAB/{repo}/actions/runs/{run_id}/pending_deployments"
-          - "payload={{\\"environment_ids\\":[{env_id}],\\"state\\":\\"approved\\",\\"comment\\":\\"Ship it!\\"}}"
+          - "-d"
+          - "{{"environment_ids":[{env_id}],"state":"approved","comment":"Ship it!"}}"
       restartPolicy: Never
   backoffLimit: 2"""
   return template
