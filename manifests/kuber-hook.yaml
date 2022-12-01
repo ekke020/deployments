@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  generateName: app-slack-notification-
+  generateName: kuber-workflow-approver
   annotations:
     argocd.argoproj.io/hook: PostSync
 spec:
@@ -20,6 +20,6 @@ spec:
           - "Content-Type: application/json"
           - "https://api.github.com/repos/PricerAB/Kuber/actions/runs/3593891925/pending_deployments"
           - "-d"
-          - "{"environment_ids":[743920904],"state":"approved","comment":"Ship it!"}"
+          - "{\"environment_ids\":[743920904],\"state\":\"approved\",\"comment\":\"Ship it!\"}"
       restartPolicy: Never
   backoffLimit: 2
