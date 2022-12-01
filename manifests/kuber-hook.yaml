@@ -15,7 +15,6 @@ spec:
             valueFrom:
               secretRef:
                 name: kuber-secret
-                optional: false
         command:
           - "curl"
           - "-X"

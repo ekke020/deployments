@@ -14,11 +14,8 @@ spec:
       - name: slack-notification
         image: curlimages/curl
         env:
-          - name: SECRET
-            valueFrom:
-              secretRef:
-                name: kuber-secret
-                optional: false
+        - secretRef:
+            name: kuber-secret
         command:
           - "curl"
           - "-X"
