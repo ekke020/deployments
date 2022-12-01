@@ -16,6 +16,7 @@ jobs:
         id: parse
         run: | 
           commit=$(echo "${{ github.event.head_commit.message }}" | tail -3)
+          echo $commit
           for word in $commit; do
             IFS=':' read -r key val <<< "$word"
             if [[ "$key" == "runid" ]]; then
