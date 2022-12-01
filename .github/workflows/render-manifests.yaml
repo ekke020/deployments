@@ -12,6 +12,24 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: parse commit
+        id: parse
+        run: | 
+          commit=$(echo "${{ github.event.head_commit.message }}" | tail -3)
+          for word in $commit; do
+            IFS=':' read -r key val <<< "$word"
+            if [[ "$key" == "runid" ]]; then
+              echo "run_id=$val" >> $GITHUB_OUTPUT
+            elif [[ "$key" == "repo" ]]; then
+              echo "repo=$val" >> $GITHUB_OUTPUT
+            elif [[ "$key" == "envid" ]]; then
+              echo "env_id=$val" >> $GITHUB_OUTPUT
+            fi
+          done
+        shell: bash
+      - name: generate hook
+        run: |
+          python3 kuber-hook.py ${{ secrets.API_GITHUB_TOKEN }} ${{ steps.parse.outputs.repo }} ${{ steps.parse.outputs.run_id }} ${{ steps.parse.outputs.envid }}
       - name: Run render script
         run: ./render.sh
       - name: Commit if changes
