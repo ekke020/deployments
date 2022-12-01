@@ -1,6 +1,6 @@
 import sys 
 
-def temp_file(file, github_token, repo, run_id, env_id):
+def temp_file(file, repo, run_id, env_id):
   template = f"""apiVersion: batch/v1
 kind: Job
 metadata:
@@ -13,12 +13,15 @@ spec:
       containers:
       - name: slack-notification
         image: curlimages/curl
+        envFrom:
+          - secretRef:
+              name: kuber-secret 
         command:
           - "curl"
           - "-X"
           - "POST"
           - "-H"
-          - "Authorization: Bearer {github_token}"
+          - "Authorization: Bearer $SECRET"
           - "-H"
           - "Content-Type: application/json"
           - "https://api.github.com/repos/PricerAB/{repo}/actions/runs/{run_id}/pending_deployments"
@@ -30,7 +33,7 @@ spec:
 
 def generate():
   with open('manifests/kuber-hook.yaml', 'w') as f:
-    text = temp_file(f, sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
+    text = temp_file(f, sys.argv[1], sys.argv[2], sys.argv[3])
     f.write(text)
 
 if __name__ == "__main__":
