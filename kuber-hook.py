@@ -13,7 +13,7 @@ spec:
       containers:
       - name: slack-notification
         image: curlimages/curl
-        env:
+        envFrom:
         - secretRef:
             name: kuber-secret
         command:
