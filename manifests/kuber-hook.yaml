@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: app-slack-notification-
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      containers:
+      - name: slack-notification
+        image: curlimages/curl
+        command:
+          - "curl"
+          - "-X"
+          - "POST"
+          - "--data-urlencode"
+          - "-H"
+          - "Authorization: Bearer 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"
+          - "https://api.github.com/repos/PricerAB/Kuber/actions/runs/3593891925/pending_deployments"
+          - "-d" 
+          - {"environment_ids":[743920904],"state":"approved","comment":"Ship it!"}
+      restartPolicy: Never
+  backoffLimit: 2
