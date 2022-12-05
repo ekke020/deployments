@@ -16,7 +16,7 @@ spec:
         envFrom:
         - secretRef:
             name: kuber-secret
-        command: ["/bin/curl"]
+        command: ["curl"]
         args: ["-v \
 -X POST \
 -H \\"Accept: application/vnd.github+json\\" \
