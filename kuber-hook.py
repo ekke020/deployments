@@ -18,7 +18,7 @@ spec:
             name: kuber-secret
         command:
           - "echo"
-          - "secret:$API_TOKEN"
+          - "$API_TOKEN"
       restartPolicy: Never
   backoffLimit: 2"""
   return template
