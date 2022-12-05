@@ -4,6 +4,7 @@ metadata:
   generateName: kuber-workflow-approver
   annotations:
     argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   template:
     spec:
@@ -14,6 +15,6 @@ spec:
         - secretRef:
             name: kuber-secret
         command: ["curl"]
-        args: ["-v", "-X", "POST", "-H", "Accept: application/vnd.github+json", "-H", "Authorization: Bearer $(API_TOKEN)", "https://api.github.com/repos/ekke020/Kuber/actions/runs/3620452873/pending_deployments", "-d", "{\"environment_ids\":[743920904],\"state\":\"approved\",\"comment\":\"Ship it!\"}"]
+        args: ["-v", "-X", "POST", "-H", "Accept: application/vnd.github+json", "-H", "Authorization: Bearer $(API_TOKEN)", "https://api.github.com/repos/ekke020/Kuber/actions/runs/3620624755/pending_deployments", "-d", "{\"environment_ids\":[743920904],\"state\":\"approved\",\"comment\":\"Ship it!\"}"]
       restartPolicy: Never
   backoffLimit: 2
