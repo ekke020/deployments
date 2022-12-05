@@ -15,16 +15,6 @@ spec:
             name: kuber-secret
         command:
           - "echo"
-          - "secret:$SECRET"
-          - "curl"
-          - "-X"
-          - "POST"
-          - "-H"
-          - "Authorization: Bearer $SECRET"
-          - "-H"
-          - "Content-Type: application/json"
-          - "https://api.github.com/repos/PricerAB/Kuber/actions/runs/3593891925/pending_deployments"
-          - "-d"
-          - "{\"environment_ids\":[743920904],\"state\":\"approved\",\"comment\":\"Ship it!\"}"
+          - "secret:$API_TOKEN"
       restartPolicy: Never
   backoffLimit: 2
