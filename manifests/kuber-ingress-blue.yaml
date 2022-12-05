@@ -1,0 +1,10 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kuber-ingress
+spec:
+  defaultBackend:
+    service:
+      name: kuber-service-blue
+      port:
+        number: 8080
