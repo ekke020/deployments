@@ -32,6 +32,6 @@ spec:
   strategy:
     blueGreen:                       
       activeService: kuber-service
-      previewService: kuber-service-preview
+      previewService: kuber-service-green
       autoPromotionEnabled: false
       previewReplicaCount: 1
