@@ -1,5 +1,5 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 
 metadata:
   name: kuber-deployment
@@ -29,3 +29,9 @@ spec:
               protocol: TCP
       imagePullSecrets:
         - name: regcred
+  strategy:
+    blueGreen:                       
+      activeService: rollout-kuber-active
+      previewService: rollout-kuber-preview
+      autoPromotionEnabled: false
+      previewReplicaCount: 1
