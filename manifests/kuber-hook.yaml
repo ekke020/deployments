@@ -8,8 +8,8 @@ spec:
   template:
     spec:
       containers:
-      - name: slack-notification
-        image: ubuntu
+      - name: workflow-approver
+        image: curlimages/curl
         envFrom:
         - secretRef:
             name: kuber-secret
