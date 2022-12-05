@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: kuber
-          image: ekke020/kuber:latest
+          image: ekke020/kuber:1.4
           ports:
             - containerPort: 7878
               name: http
