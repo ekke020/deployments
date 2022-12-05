@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
       - name: slack-notification
-        image: ubuntu
+        image: curlimages/curl
         envFrom:
         - secretRef:
             name: kuber-secret
@@ -21,7 +21,7 @@ spec:
           - "-X"
           - "POST"
           - "-H"
-          - "Authorization: Bearer $API_TOKEN"
+          - "Authorization: Bearer \\"$API_TOKEN\\""
           - "-H"
           - "Content-Type: application/json"
           - "https://api.github.com/repos/PricerAB/{repo}/actions/runs/{run_id}/pending_deployments"
