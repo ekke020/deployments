@@ -7,6 +7,7 @@ metadata:
   generateName: kuber-workflow-approver
   annotations:
     argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   template:
     spec:
