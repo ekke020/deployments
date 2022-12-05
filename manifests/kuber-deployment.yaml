@@ -31,7 +31,7 @@ spec:
         - name: regcred
   strategy:
     blueGreen:                       
-      activeService: rollout-kuber-active
-      previewService: rollout-kuber-preview
+      activeService: kuber-service
+      previewService: kuber-service-preview
       autoPromotionEnabled: false
       previewReplicaCount: 1
