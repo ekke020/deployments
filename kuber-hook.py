@@ -18,12 +18,11 @@ spec:
             name: kuber-secret
         command: ["/bin/curl"]
         args: ["-v \
-          -X POST \
-          -H "Accept: application/vnd.github+json" \
-          -H "Authorization: Bearer $API_TOKEN" \
-          https://api.github.com/repos/ekk020/{repo}/actions/runs/{run_id}/pending_deployments \
-          -d '{{\\"environment_ids\\":[{env_id}],\\"state\\":\\"approved\\",\\"comment\\":\\"Ship it!\\"}}'
-        "]
+-X POST \
+-H \\"Accept: application/vnd.github+json\\" \
+-H \\"Authorization: Bearer $API_TOKEN\\" \
+https://api.github.com/repos/ekk020/{repo}/actions/runs/{run_id}/pending_deployments \
+-d '{{\\"environment_ids\\":[{env_id}],\\"state\\":\\"approved\\",\\"comment\\":\\"Ship it!\\"}}'"]
       restartPolicy: Never
   backoffLimit: 2"""
   return template
