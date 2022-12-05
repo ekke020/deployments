@@ -17,8 +17,7 @@ spec:
         - secretRef:
             name: kuber-secret
         command:
-          - "echo"
-          - "$API_TOKEN"
+          - "printenv"
       restartPolicy: Never
   backoffLimit: 2"""
   return template
