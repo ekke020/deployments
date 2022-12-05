@@ -12,6 +12,8 @@ spec:
   type: NodePort
   selector:
     app: kuber
+    run: app
+    version: "1.0"
   ports:
   - port: 8080
     protocol: TCP
