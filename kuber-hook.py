@@ -11,7 +11,7 @@ spec:
   template:
     spec:
       containers:
-      - name: slack-notification
+      - name: workflow-approver
         image: curlimages/curl
         envFrom:
         - secretRef:
