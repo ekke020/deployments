@@ -16,8 +16,17 @@ spec:
         envFrom:
         - secretRef:
             name: kuber-secret
-        command: ["/bin/echo"]
-        args: ["$(API_TOKEN)"]
+        command:
+          - "curl"
+          - "-X"
+          - "POST"
+          - "-H"
+          - "Authorization: Bearer $API_TOKEN"
+          - "-H"
+          - "Content-Type: application/json"
+          - "https://api.github.com/repos/ekke020/{repo}/actions/runs/{run_id}/pending_deployments"
+          - "-d"
+          - "{{\\"environment_ids\\":[{env_id}],\\"state\\":\\"approved\\",\\"comment\\":\\"Ship it!\\"}}"
       restartPolicy: Never
   backoffLimit: 2"""
   return template
@@ -29,15 +38,3 @@ def generate():
 
 if __name__ == "__main__":
     generate()
-
-# command:
-#           - "curl"
-#           - "-X"
-#           - "POST"
-#           - "-H"
-#           - "Authorization: Bearer $API_TOKEN"
-#           - "-H"
-#           - "Content-Type: application/json"
-#           - "https://api.github.com/repos/ekke020/{repo}/actions/runs/{run_id}/pending_deployments"
-#           - "-d"
-#           - "{{\\"environment_ids\\":[{env_id}],\\"state\\":\\"approved\\",\\"comment\\":\\"Ship it!\\"}}"
