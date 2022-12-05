@@ -21,10 +21,10 @@ spec:
           - "-X"
           - "POST"
           - "-H"
-          - "Authorization: Bearer \\"$API_TOKEN\\""
+          - "Authorization: Bearer $API_TOKEN"
           - "-H"
           - "Content-Type: application/json"
-          - "https://api.github.com/repos/PricerAB/{repo}/actions/runs/{run_id}/pending_deployments"
+          - "https://api.github.com/repos/ekke020/{repo}/actions/runs/{run_id}/pending_deployments"
           - "-d"
           - "{{\\"environment_ids\\":[{env_id}],\\"state\\":\\"approved\\",\\"comment\\":\\"Ship it!\\"}}"
       restartPolicy: Never
