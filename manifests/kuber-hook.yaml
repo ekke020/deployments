@@ -14,6 +14,6 @@ spec:
         - secretRef:
             name: kuber-secret
         command: ["/bin/curl"]
-        args: ["-v -X POST -H \"Accept: application/vnd.github+json\" -H \"Authorization: Bearer $API_TOKEN\" https://api.github.com/repos/ekk020/awdad/actions/runs/awdadwa/pending_deployments -d '{\"environment_ids\":[awdwad],\"state\":\"approved\",\"comment\":\"Ship it!\"}'"]
+        args: ["-v -X POST -H \"Accept: application/vnd.github+json\" -H \"Authorization: Bearer $API_TOKEN\" https://api.github.com/repos/ekk020/Kuber/actions/runs/3593891925/pending_deployments -d '{\"environment_ids\":[743920904],\"state\":\"approved\",\"comment\":\"Ship it!\"}'"]
       restartPolicy: Never
   backoffLimit: 2
