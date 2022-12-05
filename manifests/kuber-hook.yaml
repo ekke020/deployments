@@ -15,6 +15,6 @@ spec:
         - secretRef:
             name: kuber-secret
         command: ["curl"]
-        args: ["-v", "-X", "POST", "-H", "Accept: application/vnd.github+json", "-H", "Authorization: Bearer $(API_TOKEN)", "https://api.github.com/repos/ekke020/Kuber/actions/runs/3621583726/pending_deployments", "-d", "{\"environment_ids\":[743920904],\"state\":\"approved\",\"comment\":\"Ship it!\"}"]
+        args: ["-v", "-X", "POST", "-H", "Accept: application/vnd.github+json", "-H", "Authorization: Bearer $(API_TOKEN)", "https://api.github.com/repos/ekke020/Kuber/actions/runs/3621632775/pending_deployments", "-d", "{\"environment_ids\":[743920904],\"state\":\"approved\",\"comment\":\"Ship it!\"}"]
       restartPolicy: Never
   backoffLimit: 2
