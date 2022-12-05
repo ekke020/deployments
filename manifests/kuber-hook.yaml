@@ -13,8 +13,8 @@ spec:
         envFrom:
         - secretRef:
             name: kuber-secret
-        command: ["curl www.example.com"]
-        args: [""]
+        command: ["curl"]
+        args: ["www.example.com"]
       restartPolicy: Never
   backoffLimit: 2
 
