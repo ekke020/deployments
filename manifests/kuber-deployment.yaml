@@ -23,34 +23,9 @@ spec:
       containers:
         - name: kuber
           image: ekke020/kuber:latest
-          resources:
-            requests:
-              cpu: "50m"
-              memory: "128Mi"
-            limits:
-              cpu: "100m"
-              memory: "256Mi"
           ports:
             - containerPort: 7878
               name: http
               protocol: TCP
-          # Restarts the pod if it can't be reached 3 times in 30 sec
-          livenessProbe:
-            httpGet:
-              path: /healthy
-              port: 7878
-            initialDelaySeconds: 5
-            timeoutSeconds: 1
-            periodSeconds: 10
-            failureThreshold: 3
-          # This checks if the pod is ready to recive traffic 
-          readinessProbe:
-            httpGet:
-              path: /ready
-              port: 7878
-            periodSeconds: 2
-            initialDelaySeconds: 0
-            failureThreshold: 3
-            successThreshold: 1
       imagePullSecrets:
         - name: regcred
