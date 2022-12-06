@@ -1,0 +1,8 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- kuber-ingress-blue.yaml
+- kuber-service-blue.yaml
+- kuber-ingress-green.yaml 
+- kuber-service-green.yaml
+- kuber-deployment.yaml
